@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TelstraProject</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="snackbar_retry">RETRY</string>
+    <string name="interrupted_connection">Interrupted Connection</string>
+    <string name="response_failure">Failed !!!</string>
+    <string name="alert_title">No Internet !</string>
+    <string name="alert_msg">Please enable your internet connection.</string>
+</resources>
