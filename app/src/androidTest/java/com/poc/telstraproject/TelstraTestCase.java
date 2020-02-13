@@ -24,6 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -34,7 +35,6 @@ import static org.junit.Assert.*;
 public class TelstraTestCase {
 
     Context appContext;
-    boolean isInternetAvailable;
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -50,14 +50,7 @@ public class TelstraTestCase {
     {
         ConnectivityManager connectivityManager = (ConnectivityManager) activityRule.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting())
-        {
-            assertTrue(true);
-        }
-        else
-        {
-            assertTrue(false);
-        }
+        assertTrue(activeNetwork.isConnectedOrConnecting());
     }
 
 
