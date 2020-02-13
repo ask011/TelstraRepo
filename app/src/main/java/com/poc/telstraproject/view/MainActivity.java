@@ -69,29 +69,30 @@ public class MainActivity extends AppCompatActivity {
         model.getData().observe(this, new Observer<JsonData>() {
             @Override
             public void onChanged(JsonData response) {
-                if(actionBar != null)
+                if(response != null)
                 {
-                    String headerTitle = response.getTitle();
-                    if(headerTitle != null && !headerTitle.isEmpty())
+                    if (actionBar != null)
                     {
-                        actionBar.setTitle(response.getTitle());
+                        String headerTitle = response.getTitle();
+                        if (headerTitle != null && !headerTitle.isEmpty()) {
+                            actionBar.setTitle(response.getTitle());
+                        }
                     }
-                }
 
-                if(adapter == null)
-                {
-                    adapter = new ListAdapter(response.getRowList());
-                    recyclerView.setAdapter(adapter);
-                }
-                else
-                {
-                    adapter.setData(response.getRowList());
-                    adapter.notifyDataSetChanged();
-                }
+                    if (adapter == null)
+                    {
+                        adapter = new ListAdapter(response.getRowList());
+                        recyclerView.setAdapter(adapter);
+                    } else
+                    {
+                        adapter.setData(response.getRowList());
+                        adapter.notifyDataSetChanged();
+                    }
 
-                if(swipeRefreshLayout != null)
-                {
-                    swipeRefreshLayout.setRefreshing(false);
+                    if (swipeRefreshLayout != null)
+                    {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
                 }
             }
         });
