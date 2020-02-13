@@ -53,21 +53,24 @@ public class TelstraTestCase {
     {
         ConnectivityManager connectivityManager = (ConnectivityManager) activityRule.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        assertTrue(activeNetwork.isConnectedOrConnecting());
+        assertTrue(activeNetwork != null && activeNetwork.isConnectedOrConnecting());
     }
 
 
     @Test
     public void getData()
     {
-         ApiInterface apiInterface = ApiClient.getRetrofit(appContext).create(ApiInterface.class);
+            ApiInterface apiInterface = ApiClient.getRetrofit(appContext).create(ApiInterface.class);
             Call<JsonData> call = apiInterface.getData();
-            try {
+            try
+            {
                 Response<JsonData> response = call.execute();
                 assertTrue(response.isSuccessful());
-            } catch (IOException e) {
+                assertNotNull(response.body());
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-                assertTrue(false);
             }
 
     }
