@@ -13,6 +13,7 @@ import com.poc.telstraproject.network.ApiClient;
 import com.poc.telstraproject.network.ApiInterface;
 import com.poc.telstraproject.view.MainActivity;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
@@ -38,7 +40,8 @@ public class TelstraTestCase {
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Test
+
+    @Before
     public void useAppContext() {
         // Context of the app under test.
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
