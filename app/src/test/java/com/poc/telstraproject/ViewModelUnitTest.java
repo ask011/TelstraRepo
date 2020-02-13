@@ -19,27 +19,4 @@ import org.mockito.MockitoAnnotations;
 @RunWith(JUnit4.class)
 public class ViewModelUnitTest {
 
-
-    @Mock
-    ApiInterface apiInterface;
-
-    @Mock
-    ApiClient apiClient;
-
-    @Rule
-    /*public ActivityTestRule<MainActivity> activityRule =
-            new ActivityTestRule(MainActivity.class);*/
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-//        apiClient = ApiClient.getRetrofit().create(ApiInterface.class);
-    }
-
-    @Test
-    public void getData()
-    {
-
-    }
-
 }
